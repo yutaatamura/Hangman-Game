@@ -6,7 +6,10 @@ var userInputLetter;
 var lettersGuessed = [];
 var letterLocationIndex = [];
 var double = false;
+var match = false;
 var displayAnswer;
+var userWins = 0;
+var userLosses = 0;
 
 function selectWord() {
 
@@ -20,6 +23,7 @@ document.getElementById("displayAnswer").innerHTML = displayAnswer.join(' ');
 };
 
 document.onload = selectWord();
+document.onload = update();
 
 function checkDouble() {
      for (var i = 0; i < lettersGuessed.length; i++) {
@@ -42,30 +46,39 @@ function compare() {
          double = false; //reset double
          return; 
      } else {
-         console.log("we are in the else of compare");
+         
         for (var i = 0; i < separated.length; i++) {
              if (userInputLetter === separated[i]) {
+                 match = true;
                 letterLocationIndex.push(i);
                 console.log("letterLocationIndex should be updated");
                 for (var i = 0; i < letterLocationIndex.length; i++) {
                 displayAnswer.splice(letterLocationIndex[i],1,userInputLetter);
                 document.getElementById("displayAnswer").innerHTML = displayAnswer.join(' '); 
-                }
-            }  else {
-                //  guesses--;
-                //     if (guesses === 0) {
-                //     userLosses++
-                     
-                    console.log("WRONG! TRY AGAIN!");
-                    document.getElementById("guessedLetters").innerHTML = lettersGuessed;
-                    
+                }           
                  }
                 };
-                letterLocationIndex = []; //reset array
+                
+                letterLocationIndex = []; //reset array    
              };
-            };
-            
 
+             if (match != true) {
+                 guesses--;
+                 alert("Wrong! Try again!");
+                 update();
+            } else {
+                alert("Nice guess!");
+                update();
+                match = false;
+            }
+        };
+            
+function reset() {
+    lettersGuessed = [];
+    guesses = 15;
+    update();
+    selectWord();
+};
    
 
 function update() {
@@ -84,6 +97,14 @@ document.onkeyup = function(event) {
      lettersGuessed.push(userInputLetter);
      checkDouble();
      compare();
+
+        if (displayAnswer.join("") === separated.join("")) {
+            userWins++;
+            alert("Congrats! You guessed it!");
+            reset();
+            update();
+        }
+    
     };
 
 
