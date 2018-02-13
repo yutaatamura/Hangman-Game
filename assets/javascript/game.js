@@ -1,7 +1,7 @@
-var words = ["kaa", "buu", "zee"];
+var words = ["rat", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "goat", "monkey", "rooster", "dog", "pig"];
 var computerOutput;
 var separated;
-var guesses = 15;
+var guesses = 3;
 var userInputLetter;
 var lettersGuessed = [];
 var letterLocationIndex = [];
@@ -17,7 +17,7 @@ computerOutput = words[Math.floor(Math.random() * words.length)];
 console.log(computerOutput);
 separated = computerOutput.split("");
 console.log(separated);
-displayAnswer = new Array(separated.length).fill(" * ");
+displayAnswer = new Array(separated.length).fill(" _ ");
 document.getElementById("displayAnswer").innerHTML = displayAnswer.join(' ');
 //use array.join(' ') to display values without the commas
 };
@@ -94,7 +94,7 @@ document.onkeyup = function(event) {
      userInputLetter = String.fromCharCode(event.which).toLowerCase();
      
      // pushes userInputLetter into the array lettersGuessed
-     lettersGuessed.push(userInputLetter);
+     lettersGuessed.push(" " + userInputLetter);
      checkDouble();
      compare();
 
