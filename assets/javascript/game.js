@@ -104,6 +104,13 @@ document.onkeyup = function(event) {
             reset();
             update();
         }
+
+        if (guesses === 0) {
+            userLosses++;
+            alert("Sorry, you couldn't guess it.");
+            reset();
+            update();
+        }
     
     };
 
