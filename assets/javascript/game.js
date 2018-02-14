@@ -75,7 +75,7 @@ function compare() {
             
 function reset() {
     lettersGuessed = [];
-    guesses = 15;
+    guesses = 3;
     update();
     selectWord();
 };
