@@ -67,6 +67,9 @@ function compare() {
                  hideMissedMark();    
                  update();
                  document.getElementById("gameMessage").innerHTML = "Wrong! Try again!";
+                 setTimeOut(function() {
+                     document.getElementById("gameMessage").innerHTML = ""}, 3000);
+                 
                 //  alert("Wrong! Try again!");
             } else {
                 update();
@@ -130,19 +133,19 @@ document.onkeyup = function(event) {
      compare();
      
 
-        if (displayAnswer.join("") === separated.join("")) {
-            userWins++;
-            document.getElementById("gameMessage").innerHTML = ("Congrats! You guessed it!");
-            reset();
-            update();
-        }
+    if (displayAnswer.join("") === separated.join("")) {
+        userWins++;
+        document.getElementById("gameMessage").innerHTML = ("Congrats! You guessed it!");
+        reset();
+        update();
+    }
 
-        if (guesses === 0) {
-            userLosses++;
-            document.getElementById("gameMessage").innerHTML = ("Sorry, you couldn't guess it. You lose.");
-            reset();
-            update();
-        }
+    if (guesses === 0) {
+        userLosses++;
+        document.getElementById("gameMessage").innerHTML = ("Sorry, you couldn't guess it. You lose.");
+        reset();
+        update();
+    }
     
     };
 
