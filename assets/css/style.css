@@ -1,0 +1,36 @@
+@font-face {
+    font-family: Yozakura;
+    src: url(YozakuraJP-Regular.otf);
+}
+
+body {
+    background-image: url('http://elkhalillaw.com/wp-content/uploads/2015/02/beautiful-art-of-chinese-new-year.jpg');
+    background-size: cover;   
+}
+
+#missedIcon {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    line-height: 40px;
+}
+
+#gameMessage {
+    margin-left: 50px;
+    height: 20px;
+    width: 500px;
+
+}
+.jumbotron {
+    font-family: Yozakura;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq34Ag9HFXw-DL57t4LMRd3ivJqtwCNfxAzgFEebdmlZRP0Y5d8w');  
+}
+#gameDetailsContainer {
+    background-color:rgb(255, 255, 255); 
+    font-family:'Abril Fatface', cursive;
+}
+
+#sideMarkerContainer {
+    background-color:rgb(255, 255, 255);
+};
+

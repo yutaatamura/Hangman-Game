@@ -64,12 +64,15 @@ function compare() {
 
              if (match != true) {
                  guesses--;
-                 alert("Wrong! Try again!");
+                 hideMissedMark();    
                  update();
+                 document.getElementById("gameMessage").innerHTML = "Wrong! Try again!";
+                //  alert("Wrong! Try again!");
             } else {
-                alert("Nice guess!");
                 update();
                 match = false;
+                document.getElementById("gameMessage").innerHTML = "Nice guess!";
+                // alert("Nice guess!");
             }
         };
             
@@ -78,6 +81,7 @@ function reset() {
     guesses = 3;
     update();
     selectWord();
+    showMissedMark();
 };
    
 
@@ -88,26 +92,54 @@ function update() {
         document.getElementById("guessedLetters").innerHTML = lettersGuessed;
  };
 
+function hideMissedMark() {
+    if (guesses === 2) { 
+        document.getElementById("missMark3").style.visibility ="hidden";
+        return;
+    };
+    if (guesses === 1) { 
+        document.getElementById("missMark2").style.visibility="hidden";
+        return;
+    }
+    if (guesses === 0) {
+        document.getElementById("missMark1").style.visibility="hidden";
+        return;
+    }
+};
+
+function showMissedMark() {
+    document.getElementById("missMark3").style.visibility="visible"
+    document.getElementById("missMark2").style.visibility="visible";
+    document.getElementById("missMark1").style.visibility="visible";
+};
+     
+
 
 document.onkeyup = function(event) {
     
+    if (event.which < 65 || event.which > 90) {
+       alert("Please press a key from a - z.");
+        return;
+    };
+
     userInputLetter = String.fromCharCode(event.which).toLowerCase();
     
      // pushes userInputLetter into the array lettersGuessed
      lettersGuessed.push(" " + userInputLetter);
      checkDouble();
      compare();
+     
 
         if (displayAnswer.join("") === separated.join("")) {
             userWins++;
-            alert("Congrats! You guessed it!");
+            document.getElementById("gameMessage").innerHTML = ("Congrats! You guessed it!");
             reset();
             update();
         }
 
         if (guesses === 0) {
             userLosses++;
-            alert("Sorry, you couldn't guess it.");
+            document.getElementById("gameMessage").innerHTML = ("Sorry, you couldn't guess it. You lose.");
             reset();
             update();
         }
