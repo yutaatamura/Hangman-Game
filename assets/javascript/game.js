@@ -90,9 +90,9 @@ function update() {
 
 
 document.onkeyup = function(event) {
-
-     userInputLetter = String.fromCharCode(event.which).toLowerCase();
-     
+    
+    userInputLetter = String.fromCharCode(event.which).toLowerCase();
+    
      // pushes userInputLetter into the array lettersGuessed
      lettersGuessed.push(" " + userInputLetter);
      checkDouble();
